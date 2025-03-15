@@ -1,23 +1,16 @@
 import calendar
 from datetime import datetime, timedelta
-
-
 WORKING_HOURS = (9, 17)  # 9 AM - 5 PM
 HOLIDAYS = [(2025, 1, 1), (2025, 12, 25)]  
-
-
 meetings = {}
-
 def is_working_day(date):
-    """Check if the given date is a working day."""
+    
     if date.weekday() >= 5:  # 5 = Saturday, 6 = Sunday
         return False
     if (date.year, date.month, date.day) in HOLIDAYS:
         return False
     return True
-
 def get_available_slots(user, date):
-    """Return available time slots for a user on a given date."""
     if not is_working_day(date):
         return []
     
@@ -35,7 +28,7 @@ def get_available_slots(user, date):
     return available_slots
 
 def schedule_meeting(user, date, start_hour):
-    """Schedule a meeting for a user on a given date and time."""
+    
     if not is_working_day(date):
         return "Cannot schedule on weekends or holidays."
     
@@ -54,12 +47,12 @@ def schedule_meeting(user, date, start_hour):
     return f"Meeting scheduled for {user} on {date.strftime('%Y-%m-%d')} from {start_hour}:00 to {start_hour+1}:00."
 
 def view_meetings(user):
-    """View upcoming meetings for a user."""
+    
     return meetings.get(user, [])
 
-# Example usage
+# Example 
 date = datetime(2025, 3, 17)
-print(schedule_meeting("Alice", date, 10))
-print(get_available_slots("Alice", date))
-print(view_meetings("Alice"))
+print(schedule_meeting("x", date, 10))
+print(get_available_slots("x", date))
+print(view_meetings("x"))
 
